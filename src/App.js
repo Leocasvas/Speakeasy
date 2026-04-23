@@ -10,6 +10,7 @@ function App() {
     const updatedNames = [...names];
     updatedNames[index] = value;
     setNames(updatedNames);
+    if (payer) setPayer(null); // Clear previous winner when names are edited
     if (error) setError("");
   };
 
@@ -71,7 +72,9 @@ function App() {
           <div className="result-container">
             <hr />
             <h2>The lucky winner is...</h2>
-            <p className="winner-name">{payer} is paying the bill!</p>
+            <p key={payer} className="winner-name">
+              {payer} is paying the bill!
+            </p>
           </div>
         )}
       </div>
